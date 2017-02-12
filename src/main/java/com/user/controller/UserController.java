@@ -79,7 +79,7 @@ public class UserController {
 		userService.createNewUser(user);
 	}
 
-	@RequestMapping(value = "/json/{userName}", method = RequestMethod.GET)
+	@RequestMapping(value = "/json/{userName:.+}", method = RequestMethod.GET)
 	public @ResponseBody User getUserInfoByUserName(@PathVariable("userName") String userName) {
 		User user = userService.getUserByUsername(userName);
 		return user;
