@@ -23,4 +23,11 @@ public class UserService {
 		
 		userMapper.createUser(user);
 	}
+	
+	public User getUserByUsername(String userName){
+		
+		User user;
+		user = userMapper.getUserByUserName(userName);
+		return user;
+	}
 }

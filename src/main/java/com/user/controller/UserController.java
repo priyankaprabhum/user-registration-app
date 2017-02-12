@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.user.model.User;
@@ -50,9 +51,14 @@ public class UserController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public @ResponseBody User createUserInfo(@RequestBody User user) {
+	public @ResponseBody void createUserInfo(@RequestBody User user) {
 
 		userService.createNewUser(user);
-		return userService.getUserInformation(user.getUserId());
+	}
+	
+	@RequestMapping(value = "/json/{userName}", method = RequestMethod.GET)
+	public @ResponseBody User getUserInfoByUserName(@PathVariable("userName") String userName) {
+		User user = userService.getUserByUsername(userName);
+		return user;
 	}
 }

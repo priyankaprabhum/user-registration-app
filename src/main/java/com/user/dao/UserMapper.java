@@ -35,10 +35,19 @@ public class UserMapper implements RowMapper<User> {
 		User user = jdbTemplate.queryForObject(sql, new Object[] { userId }, new UserMapper());
 		return user;
 	}
+
+	public void createUser(User user) {
+
+		String sql = "insert into loginadm01.t_user (user_name, first_name, last_name, user_email, user_password, user_role) "
+				+ "values(?, ?, ?, ?, ?, ?) ";
+		jdbTemplate.update(sql, new Object[] { user.getUserName(), user.getFirstName(), user.getLastName(),
+				user.getEmail(), user.getPassword(), user.getUserRole() });
+	}
 	
-	public void createUser(User user){
+	public User getUserByUserName(String userName){
 		
-		 String sql = "insert into loginadm01.t_user values(?, ?, ?, ?, ?, ?) ";
-		jdbTemplate.update(sql, new Object[]{user.getUserName(), user.getFirstName(),user.getLastName(),user.getEmail(),user.getPassword()});
+		String sql = "select user_id, user_name, first_name, last_name, user_email, user_role from loginadm01.t_user where user_name=?";
+		User user = jdbTemplate.queryForObject(sql, new Object[] { userName }, new UserMapper());
+		return user;
 	}
 }
