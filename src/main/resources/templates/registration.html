@@ -4,53 +4,92 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<!--     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,800" rel="stylesheet" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=Oleo+Script:400" rel="stylesheet" type="text/css" />
-    <script src="js/jquery.min.js"></script> -->
-<!--  <noscript>
-        <link rel="stylesheet" href="css/skel-noscript.css" />
-        <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="css/style-desktop.css" />
-    </noscript> -->
 </head>
 <body>
-	<div id="container_demo">
-		<div id="wrapper"></div>
-		<div id="register">
-			<h1>Sign up</h1>
-			<p>
-				<label for="usernamesignup">Your username</label> <input
-					id="usernamesignup" name="usernamesignup" required="required"
-					type="text" placeholder="mysuperusername690"></input>
-			</p>
+	<style>
+style> /* Full-width input fields */ input[type=text], input[type=password]
+	{
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
 
-			<p>
-				<label for="emailsignup"> Your email</label> <input id="emailsignup"
-					name="emailsignup" required="required" type="email"
-					placeholder="mysupermail@mail.com" />
-			</p>
+/* Set a style for all buttons */
+button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
 
-			<p>
-				<label for="emailsignup"> Your email</label> <input id="emailsignup"
-					name="emailsignup" required="required" type="email"
-					placeholder="mysupermail@mail.com" />
-			</p>
+/* Extra styles for the cancel button */
+.cancelbtn {
+	padding: 14px 20px;
+	background-color: #f44336;
+}
 
-			<p>
-				<label for="passwordsignup">Your password </label> <input
-					id="passwordsignup" name="passwordsignup" required="required"
-					type="password" placeholder="eg. X8df!90EO" />
-			</p>
-			<p>
-				<label for="passwordsignup_confirm">Please confirm your
-					password </label> <input id="passwordsignup_confirm"
-					name="passwordsignup_confirm" required="required" type="password"
-					placeholder="eg. X8df!90EO" />
-			</p>
-			<p>
-				<input id="signup" type="submit" value="Sign up" />
-			</p>
-		</div>
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+	float: left;
+	width: 50%;
+}
 
+/* Add padding to container elements */
+.container {
+	padding: 20px;
+	width: 75%;
+}
+
+/* Clear floats */
+.clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+	.cancelbtn, .signupbtn {
+		width: 100%;
+	}
+}
+</style>
+	<div class="container" id="register">
+		<form action="#" th:action="@{/user/registration}"
+			th:object="${userForm}" method="post" style="border: 1px solid #ccc">
+
+			<label for="usernamesignup"><b>User Name</b></label> <input
+				id="usernamesignup" name="usernamesignup" required="required"
+				type="text" placeholder="mysuperusername690" th:field="*{userName}"></input>
+
+			<label for="firstnamesignup">First Name</label> <input
+				id="firstnamesignup" name="firstnamesignup" required="required"
+				type="text" placeholder="first name" th:field="*{firstName}"></input>
+
+			<label for="usernamesignup">Last name</label> <input
+				id="usernamesignup" name="usernamesignup" required="required"
+				type="text" placeholder="last name" th:field="*{lastName}"></input>
+
+			<label for="emailsignup"> Email</label> <input id="emailsignup"
+				name="emailsignup" required="required" type="email"
+				placeholder="mysupermail@mail.com" th:field="*{email}" /> <label
+				for="passwordsignup">Password </label> <input id="passwordsignup"
+				name="passwordsignup" required="required" type="password"
+				placeholder="eg. X8df!90EO" th:field="*{password}" /> <label
+				for="passwordsignup_confirm">Please confirm your password </label> <input
+				id="passwordsignup_confirm" name="passwordsignup_confirm"
+				required="required" type="password" placeholder="eg. X8df!90EO" />
+			<div class="clearfix">
+				<button type="button" class="cancelbtn">Cancel</button>
+				<button type="submit" class="signupbtn">Sign Up</button>
+			</div>
+
+		</form>
 	</div>
 </body>

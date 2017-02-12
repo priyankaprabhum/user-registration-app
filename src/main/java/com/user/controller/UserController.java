@@ -36,15 +36,15 @@ public class UserController {
 		return "registration";
 	}
 
-	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public String registerUser(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
-		model.addAttribute("userForm", new User());
-		return "registration";
+	@RequestMapping(value = "/registration", method = RequestMethod.POST, produces = MediaType.TEXT_HTML_VALUE)
+	public String registerUser(@ModelAttribute("user") User userForm) {
+		System.out.println(userForm);
+		return "success";
 	}
 
 	@RequestMapping(value = "{userId}", method = RequestMethod.GET)
 	public ModelAndView getUserInfo(@PathVariable("userId") long userId) {
 		User user = userService.getUserInformation(userId);
-		return new ModelAndView("user","user",user);
+		return new ModelAndView("user", "user", user);
 	}
 }
