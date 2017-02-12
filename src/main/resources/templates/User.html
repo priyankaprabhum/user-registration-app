@@ -1,34 +1,76 @@
-<!DOCTYPE HTML>
-<head>
-<title>User Information Screen</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-</head>
+<!DOCTYPE html>
+<html>
+<style>
+    /* Full-width input fields */
+    .textvalue {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    /* Set a style for all buttons */
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+        padding: 14px 20px;
+        background-color: #f44336;
+    }
+
+    /* Float cancel and signup buttons and add an equal width */
+    .cancelbtn,.signupbtn {
+        float: left;
+        width: 50%;
+    }
+
+    /* Add padding to container elements */
+    .container {
+        padding: 16px;
+    }
+
+    /* Clear floats */
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    /* Change styles for cancel button and signup button on extra small screens */
+    @media screen and (max-width: 300px) {
+        .cancelbtn, .signupbtn {
+            width: 100%;
+        }
+    }
+</style>
 <body>
-	<h2>Submitted User Information</h2>
 
-	<div id="userInfo">
-		<p>
-			<label for="usernamesignup"><b>Your username : </b></label> <label
-				th:text="${user.userName}"> </label>
-		</p>
+<h2>User Created with Following Information:</h2>
 
-		<p>
-			<label for="emailsignup"> <b>Your email : </b></label> <label
-				th:text="${user.email}"> </label>
-		</p>
 
-		<p>
-			<label for="emailsignup"> <b>Your First Name:</b> </label> <label
-				th:text="${user.firstName}"> </label>
-		</p>
+    <div class="container">
+        <label class="textvalue" for="firstnamesignup"><b>First Name : </b> <label th:text="${user.firstName}"> </label></label>
 
-		<p>
-			<label for="emailsignup"> <b>Your Last Name :</b> </label> <label
-				th:text="${user.lastName}"> </label>
-		</p>
+        <label class="textvalue" for="lastnamesignup"><b>Last Name : </b><label th:text="${user.lastName}"></label></label>
+       
 
-	</div>
+        <label class="textvalue" for="usernamesignup"><b>User Name : </b><label th:text="${user.userName}"></label></label>
+        
+
+        <label class="textvalue" for="emailsignup"><b>Email : </b><label th:text="${user.email}"></label></label>
+        
+
+    </div>
 
 </body>
+</html>
