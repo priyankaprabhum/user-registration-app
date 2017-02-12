@@ -35,4 +35,10 @@ public class UserMapper implements RowMapper<User> {
 		User user = jdbTemplate.queryForObject(sql, new Object[] { userId }, new UserMapper());
 		return user;
 	}
+	
+	public void createUser(User user){
+		
+		 String sql = "insert into loginadm01.t_user values(?, ?, ?, ?, ?, ?) ";
+		jdbTemplate.update(sql, new Object[]{user.getUserName(), user.getFirstName(),user.getLastName(),user.getEmail(),user.getPassword()});
+	}
 }

@@ -18,4 +18,9 @@ public class UserService {
 		user = userMapper.getUserDetails(userId);
 		return user;
 	}
+	
+	public void createNewUser(User user){
+		
+		userMapper.createUser(user);
+	}
 }
